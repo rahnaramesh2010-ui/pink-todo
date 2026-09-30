@@ -1,0 +1,329 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Pink Space 🌸</title>
+
+  <style>
+    :root {
+      --primary: #e75480;
+      --primary-dark: #c93665;
+      --light: #fff0f5;
+      --lighter: #fff8fa;
+      --text: #4a3740;
+      --muted: #9b7d87;
+      --white: #ffffff;
+      --border: #f5c6d5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(
+        135deg,
+        var(--light),
+        #ffffff
+      );
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      background: var(--white);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 15px rgba(200, 80, 120, 0.08);
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .pet-display {
+      font-size: 35px;
+    }
+
+    /* ================= MAIN ================= */
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* ================= TABS ================= */
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      border: none;
+      background: var(--white);
+      color: var(--text);
+      padding: 11px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 3px 10px rgba(200, 80, 120, 0.08);
+      transition: 0.2s;
+    }
+
+    .tab:hover,
+    .tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ================= CONTENT ================= */
+
+    .section {
+      display: none;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 8px 30px rgba(200, 80, 120, 0.10);
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    /* ================= TODO ================= */
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      outline: none;
+      color: var(--text);
+      background: var(--lighter);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .input-row input {
+      flex: 1;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .primary-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--lighter);
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .task-left input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+
+    .delete {
+      background: none;
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    .task-footer {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ================= TIMER ================= */
+
+    .timer-box {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .timer-display {
+      font-size: 75px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 20px 0;
+      letter-spacing: 3px;
+    }
+
+    .timer-mode {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .timer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .timer-settings {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .timer-settings button {
+      padding: 8px 15px;
+      border-radius: 20px;
+      background: var(--light);
+      color: var(--primary);
+    }
+
+    /* ================= JOURNAL ================= */
+
+    .journal-date {
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      min-height: 250px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .save-journal {
+      margin-top: 15px;
+    }
+
+    .journal-message {
+      color: var(--primary);
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    /* ================= PERSONALIZATION ================= */
+
+    .personal-card {
+      margin-bottom: 25px;
+    }
+
+    .personal-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .theme-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .theme {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #ddd;
+    }
+
+    .pink {
+      background: #e75480;
+    }
+
+    .lavender {
+      background: #9b7ede;
+    }
+
+    .peach {
+      background: #f49b7b;
+    }
+
+    .mint {
+      background: #64c7a5;
+    }
+
+    .sky {
+      background: #64b5d9;
+    }
+
+    .pet-options {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .pet
+```
